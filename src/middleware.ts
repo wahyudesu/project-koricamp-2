@@ -1,19 +1,11 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 
-// Daftar public routes
-const isPublicRoute = createRouteMatcher([
-  '/',
-]);
+const isProtectedRoute = createRouteMatcher(['/dashboard(.*)'])
 
-export default clerkMiddleware(async (auth, request) => {
-  // Jika rute adalah public route, izinkan akses tanpa proteksi
-  if (isPublicRoute(request)) {
-    return;
-  }
+export default clerkMiddleware(async (auth, req) => {
+  if (isProtectedRoute(req)) await auth.protect()
 
-  // Proteksi untuk semua rute lain
-  await auth.protect();
-});
+}); 
 
 export const config = {
   matcher: [

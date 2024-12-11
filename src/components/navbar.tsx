@@ -129,10 +129,10 @@ return (
         </Button>
         <div className="border-r hidden md:inline"></div>
         <Button variant="outline">
-            <Link href="/sign-in">Sign in </Link>
+            <Link href="/dashboard">Sign in </Link>
         </Button>
         <Button>
-            <Link href="/sign-up">Get started </Link>
+            <Link href="/dashboard">Get started </Link>
         </Button>
         
         </div>
